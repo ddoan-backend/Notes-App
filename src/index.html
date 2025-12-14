@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="output.css">
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body class="font-sans">
-    <div class="wrapper grid grid-rows-[64px_1fr] min-h-screen text-black">
+<body class="font-sans h-screen">
+    <div class="wrapper grid grid-rows-[64px_1fr] text-black min-h-screen">
         <header class="header flex bg-gray-50 items-center justify-between px-4">
         <p class="font-bold text-2xl">QUICK NOTES</p>
         <!-- search -->
-         <div class="search relative">
+         <div class="search relative hidden">
             <i class="fa-solid fa-magnifying-glass absolute left-0.5 top-1/2 + -translate-y-1/2"></i>
             <input id="search" type="text" placeholder="Search" class="border border-gray-400 rounded-2xl pl-6">
          </div>
         <!-- add and light mode -->
         <div class="add flex gap-6">
-            <select name="" id="" class="border border-gray-400 rounded-2xl filter">
+            <select name="" id="" class="border border-gray-400 rounded-2xl filter hidden">
                 <option class="text-black" value="All">All</option>
                 <option class="text-black" value="Red">Red</option>
                 <option class="text-black" value="Blue">Blue</option>
@@ -33,24 +33,14 @@
         </div>
     </header>
     <!-- main content container -->
-    <main class="bg-black/10 grid grid-cols-4  py-6 px-6 gap-4">
-        <!-- <div class="note bg-red-400 w-80 h-64 rounded-2xl px-2 flex flex-col">
-            <h3 class="font-bold text-lg">Tittle</h3>
-
-             <div class="content text-sm text-gray-700 overflow-y-auto flex-1">
-                 Nội dung rất dài Nội dung rất dài Nội dung rất dài...
-                Nội dung rất dài Nội dung rất dài Nội dung rất dài...
-                Nội dung rất dài Nội dung rất dài Nội dung rất dài...
-                 Nội dung rất dài Nội dung rất dài Nội dung rất dài...
-             </div>
-            
-            <div class="buttonNote flex gap-2 justify-end">
-                <button class="buttonNote bg-white">Edit</button>
-                <button class="buttonNote bg-red-600" >Delete</button>
-            </div>
-        </div> -->
+    <main class="bg-black/10 grid lg:grid-cols-4  py-6 px-6 gap-4 ">
+        
     </main>
+    <!-- footer -->
     </div>
+    <div class="footer h-[100px] bg-red-500 flex items-center justify-center font-bold text-white">
+        Doandev
+     </div>
     <!-- modal add new note -->
      <div class="modal absolute inset-0 flex items-center justify-center bg-black/10 opacity-0
       pointer-events-none transition-opacity duration-200">

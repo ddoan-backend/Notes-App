@@ -72,7 +72,7 @@ function rendernote(data){
     main.innerHTML =""
     const html = data.map(note=>{
         return `
-         <div class="note ${note.color}  rounded-2xl px-2 flex flex-col h-[300px]" data-id = ${note.id}>
+         <div class="note ${note.color}  rounded-2xl px-2 flex flex-col h-[300px] min-h-0" data-id = ${note.id}>
             <h3 class="font-bold text-lg">${note.title}</h3>
 
              <div class="content text-sm text-gray-700 overflow-y-auto flex-1">
