@@ -39,3 +39,20 @@ export async function DeleteNote(id) {
         console.log("co loi xay ra khi noi server")
     }
 }
+/* funticon for edit */
+
+export async function EditNote(id,form) {
+    try {
+        const option = {
+        method: "PATCH",
+        headers: {
+                "Content-Type": "application/json"
+                 },
+        body: JSON.stringify(form)
+    }
+    const res = await fetch(`${Api}/${id}`,option)
+    } catch (error) {
+        console.error("co loi khi them note vao serer",error)
+        console.log("co loi xay ra khi noi server")
+    }
+}

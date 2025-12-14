@@ -1,10 +1,10 @@
 import { mode,wrapper,header,Addbtn,modal,cancelBtn,modalContent,BtnClose,main,inputContent,inputTitle,BtnSave,Colors
-} from "./dom.js";
-import { AddNewNote,getNotes,DeleteNote } from "./api.js";
+,DeleteBtn,modalContentEdit,modalEdit} from "./dom.js";
+import { AddNewNote,getNotes,DeleteNote,EditNote } from "./api.js";
 
 
 let selectorColor = null
-let error = []
+let currentId = 0
 /* night mode */
 mode.addEventListener("click" ,()=>{
     const isDark = wrapper.classList.toggle("bg-black")
@@ -45,6 +45,7 @@ mode.addEventListener("click" ,()=>{
 })
 /* dong mo modal */
 Addbtn.addEventListener("click",()=>{
+    selectorColor = null
     inputTitle.value = ""
     inputContent.value =""
     modal.classList.remove("opacity-0","pointer-events-none")
@@ -95,6 +96,7 @@ Colors.forEach(color =>{
     })
 /* addd new note */
 async function handleAddNote() {
+    let error = []
     const newtitle = inputTitle.value.trim()
     const newContent = inputContent.value.trim()
     if(!newtitle) error.push("thieu tieu de")
@@ -102,7 +104,7 @@ async function handleAddNote() {
     if(!selectorColor) error.push("chua chon mau")
     if(error.length > 0){
         alert("thiếu:" + error.join(", "))
-        return
+        return false
     }
     try {
         const form ={
@@ -116,7 +118,8 @@ async function handleAddNote() {
     inputTitle.value =""
     inputContent.value = ""
     selectorColor = null
-    inputTitle.value = "",inputContent.value = ""
+
+    return true
     } catch (error) {
         console.error("co loi xay ra",error)
     }
@@ -124,12 +127,21 @@ async function handleAddNote() {
 /* delete and edit */
 main.addEventListener("click",async(e)=>{
     const note = e.target.closest(".note")
+    if(!note)return
     const id = note.dataset.id
     if(e.target.closest(".Delete")){
         await DeleteNote(id)
         start()
     }
+    if(e.target.closest(".Edit")){
+        currentId = note.dataset.id
+        await handleEditNote(note)
+    }
 })
+async function handleEditNote(note) {
+    modalEdit.classList.remove("opacity-0", "pointer-events-none")
+    modalContentEdit.classList.remove("-translate-y-6", "scale-95")
+}
 
 /* button listen event */
 BtnSave.addEventListener("click",async()=>{
@@ -140,3 +152,4 @@ BtnSave.addEventListener("click",async()=>{
          return
     }
 })
+

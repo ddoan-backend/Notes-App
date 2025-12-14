@@ -12,5 +12,9 @@ export const inputTitle = document.querySelector(".inputTitle")
 export const inputContent = document.querySelector(".inputContent")
 export const BtnSave = document.querySelector(".Btnsave")
 export const Colors = document.querySelectorAll(".boderColor")
+export const DeleteBtn = document.querySelectorAll(".Delete")
+export const modalEdit = document.querySelector(".modaledit")
+export const modalContentEdit = document.querySelector(".modaleditcontent")
+
 
 

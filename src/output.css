@@ -215,6 +215,9 @@
   .left-0\.5 {
     left: calc(var(--spacing) * 0.5);
   }
+  .z-999 {
+    z-index: 999;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
