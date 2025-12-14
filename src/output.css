@@ -191,6 +191,9 @@
   .absolute {
     position: absolute;
   }
+  .fixed {
+    position: fixed;
+  }
   .relative {
     position: relative;
   }
@@ -305,8 +308,14 @@
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
   .grid-rows-\[64px_1fr\] {
     grid-template-rows: 64px 1fr;
+  }
+  .grid-rows-\[auto\] {
+    grid-template-rows: auto;
   }
   .flex-col {
     flex-direction: column;
@@ -411,6 +420,9 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
+  .pt-\[64px\] {
+    padding-top: 64px;
+  }
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
   }
@@ -501,6 +513,16 @@
       @media (hover: hover) {
         color: var(--color-white);
       }
+    }
+  }
+  .lg\:block {
+    @media (width >= 64rem) {
+      display: block;
+    }
+  }
+  .lg\:grid {
+    @media (width >= 64rem) {
+      display: grid;
     }
   }
   .lg\:grid-cols-4 {

@@ -9,17 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="font-sans h-screen">
-    <div class="wrapper grid grid-rows-[64px_1fr] text-black min-h-screen">
-        <header class="header flex bg-gray-50 items-center justify-between px-4">
+    <div class="wrapper grid grid-row-1 text-black min-h-screen">
+        <header class="header flex bg-gray-50 items-center justify-between px-4 fixed left-0 right-0 top-0 py-2">
         <p class="font-bold text-2xl">QUICK NOTES</p>
         <!-- search -->
-         <div class="search relative hidden">
+         <div class="search relative hidden lg:block">
             <i class="fa-solid fa-magnifying-glass absolute left-0.5 top-1/2 + -translate-y-1/2"></i>
             <input id="search" type="text" placeholder="Search" class="border border-gray-400 rounded-2xl pl-6">
          </div>
         <!-- add and light mode -->
         <div class="add flex gap-6">
-            <select name="" id="" class="border border-gray-400 rounded-2xl filter hidden">
+            <select name="" id="" class="border border-gray-400 rounded-2xl filter hidden lg:block">
                 <option class="text-black" value="All">All</option>
                 <option class="text-black" value="Red">Red</option>
                 <option class="text-black" value="Blue">Blue</option>
@@ -33,7 +33,7 @@
         </div>
     </header>
     <!-- main content container -->
-    <main class="bg-black/10 grid lg:grid-cols-4  py-6 px-6 gap-4 ">
+    <main class="bg-black/10 flex flex-col gap-6 lg:grid lg:grid-cols-4  py-6 px-6 pt-[64px]">
         
     </main>
     <!-- footer -->
