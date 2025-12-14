@@ -15,6 +15,12 @@ export const Colors = document.querySelectorAll(".boderColor")
 export const DeleteBtn = document.querySelectorAll(".Delete")
 export const modalEdit = document.querySelector(".modaledit")
 export const modalContentEdit = document.querySelector(".modaleditcontent")
+export const inputTitleEdit = document.querySelector(".EditTitle")
+export const inputEditContent = document.querySelector(".EditContent")
+export const SaveEdit = document.querySelector(".BtnsaveEdit")
+export const CloseEdit = document.querySelector(".BtnCloseEdit")
+export const CancelEdit = document.querySelector(".cancelEdit")
+export const filter = document.querySelector(".filter")
 
 
 

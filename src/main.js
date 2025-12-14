@@ -1,10 +1,11 @@
 import { mode,wrapper,header,Addbtn,modal,cancelBtn,modalContent,BtnClose,main,inputContent,inputTitle,BtnSave,Colors
-,DeleteBtn,modalContentEdit,modalEdit} from "./dom.js";
+,DeleteBtn,modalContentEdit,modalEdit,inputTitleEdit,inputEditContent,SaveEdit,CloseEdit,CancelEdit,filter} from "./dom.js";
 import { AddNewNote,getNotes,DeleteNote,EditNote } from "./api.js";
 
 
 let selectorColor = null
 let currentId = 0
+let Notelist =  []
 /* night mode */
 mode.addEventListener("click" ,()=>{
     const isDark = wrapper.classList.toggle("bg-black")
@@ -62,8 +63,8 @@ BtnClose.addEventListener("click",()=>{
 })
 /* CRUD APP */
 async function start() {
-    const data = await getNotes()
-    rendernote(data)
+    Notelist = await getNotes()
+    applyrender()
 }
 start()
 
@@ -118,7 +119,7 @@ async function handleAddNote() {
     inputTitle.value =""
     inputContent.value = ""
     selectorColor = null
-
+    error = []
     return true
     } catch (error) {
         console.error("co loi xay ra",error)
@@ -135,21 +136,81 @@ main.addEventListener("click",async(e)=>{
     }
     if(e.target.closest(".Edit")){
         currentId = note.dataset.id
-        await handleEditNote(note)
+        modalEdit.classList.remove("opacity-0", "pointer-events-none")
+        modalContentEdit.classList.remove("-translate-y-6", "scale-95")
     }
 })
-async function handleEditNote(note) {
-    modalEdit.classList.remove("opacity-0", "pointer-events-none")
-    modalContentEdit.classList.remove("-translate-y-6", "scale-95")
+async function handleEditNote(id) {
+    const ERROR =[]
+
+    const newtitleEdit = inputTitleEdit.value.trim()
+    const newcontentEdit = inputEditContent.value.trim()
+    if(!newtitleEdit) ERROR.push("thieu tieu de")
+    if(!newcontentEdit) ERROR.push("thieu content")
+    if(!selectorColor) ERROR.push("chua chon mau")
+    if(ERROR.length > 0){
+        alert("thieu" + ERROR.join(", "))
+        return false
+    }
+    try {
+        const newform = {
+            title:newtitleEdit,
+            content:newcontentEdit,
+            color:selectorColor
+        }
+    await EditNote(id,newform)
+    start()
+
+    inputEditContent.value =""
+    inputTitleEdit.value =""
+    selectorColor = null
+    return true
+    } catch (error) {
+        console.error("co loi xay ra",error)
+    }
 }
 
 /* button listen event */
 BtnSave.addEventListener("click",async()=>{
     const success = await handleAddNote()
-    if(!success){
+    if(success){
         modal.classList.add("opacity-0","pointer-events-none")
          modalContent.classList.add("-translate-y-6", "scale-95");
+         currentId = 0
          return
     }
 })
+SaveEdit.addEventListener("click",async()=>{
+    const success = await handleEditNote(currentId)
+    if(success){
+         modalEdit.classList.add("opacity-0","pointer-events-none")
+        modalContentEdit.classList.add("-translate-y-6","scale-95")
+        currentId = 0
+    }
+})
+CancelEdit.addEventListener("click",()=>{
+     modalEdit.classList.add("opacity-0","pointer-events-none")
+    modalContentEdit.classList.add("-translate-y-6","scale-95")
+})
+CloseEdit.addEventListener("click",()=>{
+     modalEdit.classList.add("opacity-0","pointer-events-none")
+    modalContentEdit.classList.add("-translate-y-6","scale-95")
+})
 
+/* filter color note */
+async function applyrender() {
+    const value = filter.value.trim()
+    let filtered = Notelist
+
+    if(value === "Red"){
+        filtered = Notelist.filter(note=>note.color === "bg-red-300")
+    }
+    if(value === "Yellow"){
+        filtered = Notelist.filter(note=>note.color === "bg-yellow-300")
+    }
+    if(value === "Blue"){
+        filtered = Notelist.filter(note=>note.color === "bg-blue-300")
+    }
+    rendernote(filtered)
+}
+filter.addEventListener("change",applyrender)
