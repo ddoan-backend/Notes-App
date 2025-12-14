@@ -21,6 +21,8 @@ export const SaveEdit = document.querySelector(".BtnsaveEdit")
 export const CloseEdit = document.querySelector(".BtnCloseEdit")
 export const CancelEdit = document.querySelector(".cancelEdit")
 export const filter = document.querySelector(".filter")
+export const search = document.querySelector("#search")
+export const searchBtn = document.querySelector(".fa-magnifying-glass")
 
 
 

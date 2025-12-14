@@ -1,5 +1,5 @@
 import { mode,wrapper,header,Addbtn,modal,cancelBtn,modalContent,BtnClose,main,inputContent,inputTitle,BtnSave,Colors
-,DeleteBtn,modalContentEdit,modalEdit,inputTitleEdit,inputEditContent,SaveEdit,CloseEdit,CancelEdit,filter} from "./dom.js";
+,modalContentEdit,modalEdit,inputTitleEdit,inputEditContent,SaveEdit,CloseEdit,CancelEdit,filter,search,searchBtn} from "./dom.js";
 import { AddNewNote,getNotes,DeleteNote,EditNote } from "./api.js";
 
 
@@ -214,3 +214,25 @@ async function applyrender() {
     rendernote(filtered)
 }
 filter.addEventListener("change",applyrender)
+
+/* search note */
+function searchNote(){
+    const keyword = search.value.trim().toLowerCase()
+
+    if(!keyword){
+        applyrender()
+        return
+    }
+    const result = Notelist.filter(note=>
+            note.title.toLowerCase().includes(keyword)||
+            note.content.toLowerCase().includes(keyword)
+    )
+    rendernote(result)
+}
+/* button search */
+search.addEventListener("input",searchNote)
+searchBtn.addEventListener("click",searchNote)
+search.addEventListener("keydown",e=>{
+    if(e.key === "Enter")searchNote()
+})
+

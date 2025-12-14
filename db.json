@@ -1,3 +1,16 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "id": "b554",
+      "title": "văn",
+      "content": "Chiêc thuyền ngoài xa",
+      "color": "bg-yellow-300"
+    },
+    {
+      "id": "bae0",
+      "title": "Toán",
+      "content": "a +b",
+      "color": "bg-red-300"
+    }
+  ]
 }
