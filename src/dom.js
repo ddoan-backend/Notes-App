@@ -1,0 +1,16 @@
+export const mode = document.querySelector(".mode")
+export const wrapper = document.querySelector(".wrapper")
+export const header = document.querySelector(".header")
+export const Addbtn = document.querySelector(".AddBtn")
+export const modal = document.querySelector(".modal")
+export const modalContent = document.querySelector(".modalContent")
+export const cancelBtn = document.querySelector(".cancel")
+export const option = document.querySelectorAll("option")
+export const BtnClose = document.querySelector(".BtnClose")
+export const main = document.querySelector("main")
+export const inputTitle = document.querySelector(".inputTitle")
+export const inputContent = document.querySelector(".inputContent")
+export const BtnSave = document.querySelector(".Btnsave")
+export const Colors = document.querySelectorAll(".boderColor")
+
+
